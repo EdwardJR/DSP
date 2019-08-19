@@ -1,5 +1,6 @@
-import math
 
+
+# NOTE: A simple integral calculator using midpoint
 
 def midpoint(f, a, b, n):
     h = float(b-a)/n
