@@ -6,6 +6,9 @@ from math import sin
 import cmath
 import math
 
+
+
+# NOTE: incomplete and depreciated
 # Constructing a squarewave
 T = 1
 period = T
