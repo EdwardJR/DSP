@@ -11,6 +11,7 @@ from sympy import Symbol
 
 # NOTE: integrator using only scipy.integrate
 
+
 def f(x):
     res = np.sin(x)*np.exp(-x*np.pi)
     return res
