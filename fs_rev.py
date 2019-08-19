@@ -5,7 +5,8 @@ import cmath
 import matplotlib.pyplot as plt
 from scipy import signal
 
-
+# NOTE: Not working properly
+# probably has indexing issues
 
 time = np.linspace(0, 10000, 10000, endpoint = True, retstep=False, dtype=None)
 period = 12
