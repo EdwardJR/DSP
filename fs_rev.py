@@ -1,3 +1,4 @@
+
 import numpy as np
 import math
 import cmath
@@ -7,47 +8,39 @@ from scipy import signal
 
 
 time = np.linspace(0, 1000, endpoint = True, retstep=False, dtype=None)
-period = 10
+period = 13
 x = [i for i in range(50)]
 def my_square():
     s = signal.square(2*np.pi*period*time)
     return s
 s = my_square()
+print(s)
 new_s = np.delete(s, 0)
 
 def get_ak(k):
     ak = []
     result = 0
     for i in range(k):
-        for t in range(len(time)):
-            result += s[t]*np.cos((i+1)*np.pi*t/period)*1/10
+        for t in range(period):
+            result += s[t]*np.sin((i+1)*np.pi*t/period)/period
+            print(result)
         ak.append(result)
+    print(ak)
     return ak
 def get_fs():
     fs = []
     result = 0
-    ak = get_ak(6)
-    print(len(ak))
+    ak = get_ak(1)
+    print("Total number of coefficients : {} ".format(len(ak)))
     for t in range(len(time)):
         for i in range(len(ak)):
-            result += ak[i]*np.cos((i+1)*np.pi*t/period)
+            result += ak[i]*np.sin((i+1)*np.pi*t/(period))
         fs.append(result)
         result = 0
     plt.plot(x, fs, linewidth = 3)
     plt.show()
 
-
-x1 = np.arange(0, 10, 0.1)
-dt = 0.1
-sum = 0
-al = []
-for i in x1:
-    sum += math.pow(i, 2)*dt
-    al.append(sum)
-plt.plot(x1, al, linewidth = 3)
-plt.show()
-
-
+get_fs()
 
 ######################################################
 #plots only a single harmonic

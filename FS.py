@@ -113,5 +113,3 @@ def get_fs():
     fs = []
     for k in range(len(form_cn(5))):
         for i time:
-
-        
