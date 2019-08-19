@@ -7,14 +7,29 @@ from scipy import signal
 
 
 
-time = np.linspace(0, 1000, endpoint = True, retstep=False, dtype=None)
-period = 13
-x = [i for i in range(50)]
+time = np.linspace(0, 10000, 10000, endpoint = True, retstep=False, dtype=None)
+period = 12
+x = [i for i in range(10000)]
 def my_square():
-    s = signal.square(2*np.pi*period*time)
+    s = []
+    temp = 0
+    for i in range(len(x)):
+        if temp <= 6:
+            s.append(1)
+        else:
+            s.append(0)
+            if temp == 12:
+                temp = 0
+        temp += 1
     return s
 s = my_square()
+
+# for i, n in enumerate(s):
+#     if n == -1:
+#         s[i] = 0
+
 print(s)
+
 new_s = np.delete(s, 0)
 
 def get_ak(k):
@@ -22,7 +37,7 @@ def get_ak(k):
     result = 0
     for i in range(k):
         for t in range(period):
-            result += s[t]*np.sin((i+1)*np.pi*t/period)/period
+            result += s[t+1]*np.sin((i+1)*np.pi*t/period)/period
             print(result)
         ak.append(result)
     print(ak)
@@ -30,7 +45,7 @@ def get_ak(k):
 def get_fs():
     fs = []
     result = 0
-    ak = get_ak(1)
+    ak = get_ak(10)
     print("Total number of coefficients : {} ".format(len(ak)))
     for t in range(len(time)):
         for i in range(len(ak)):
@@ -38,6 +53,7 @@ def get_fs():
         fs.append(result)
         result = 0
     plt.plot(x, fs, linewidth = 3)
+    plt.xlim(0,100)
     plt.show()
 
 get_fs()
