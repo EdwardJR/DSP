@@ -12,6 +12,7 @@ from sympy import Symbol
 from sympy import sin
 from sympy.utilities.lambdify import lambdify
 
+# NOTE: Works like a charm
 
 x = var('x')
 t = np.arange(-10, 10, 0.1)

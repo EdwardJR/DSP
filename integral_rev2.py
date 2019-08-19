@@ -10,6 +10,8 @@ from sympy import sympify
 from sympy import Symbol
 from sympy.utilities.lambdify import lambdify
 
+# NOTE: Just a failed revision
+
 # x2 = lambda x: x**2
 #
 # y, err = integrate.quad(x2, 0, 10)
