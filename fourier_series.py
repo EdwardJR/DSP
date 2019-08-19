@@ -4,6 +4,7 @@ import cmath
 import matplotlib.pyplot as plt
 from midpoint import midpoint
 
+# NOTE: This script only calculates and plots the fourier series for a given square wave
 
 time = np.arange(0, 50, 0.1)
 period = 12
@@ -41,10 +42,12 @@ def get_fs(n):
     print("Total number of coefficients : {} ".format(len(ak)))
     for t in range(len(time)):
         for i in range(len(ak)):
-            result += ak[i]*np.sin((i+1)*np.pi*t/(period))
+            result += 4*ak[i]*np.sin((i+1)*np.pi*t/(period))
         fs.append(result)
         result = 0
     plt.plot(time, fs, linewidth = 3)
     plt.xlim(0,10)
+    plt.ylim(-2,2)
     plt.show()
-get_fs(100)
+
+get_fs(10)
